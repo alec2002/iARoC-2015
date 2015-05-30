@@ -32,9 +32,24 @@ public class Brain extends IRobotCreateAdapter {
     }
     /* This method is called repeatedly. */
     public void loop() throws ConnectionLostException {
-        driveDirect(200, 200);
-        dashboard.log(String.valueOf(dashboard.getAzimuth()));
-        SystemClock.sleep(500);
+        readSensors(SENSORS_INFRARED_BYTE);
+        readSensors(SENSORS_BUMPS_AND_WHEEL_DROPS);
+        dashboard.log(String.valueOf(getInfraredByte()));
+        //check red Buoy
+        if(getInfraredByte() == 248) {
+           driveDirect(250, 250);
+        }
+        //check green Buoy
+        if(getInfraredByte() == 244) {
+            driveDirect(250, 250);
+        }
+        //check both Buoy
+        if(getInfraredByte() == 252) {
+           driveDirect(400, 400);
+        }
+
+
+
 
     }
 }
