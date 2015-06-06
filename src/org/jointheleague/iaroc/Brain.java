@@ -34,7 +34,7 @@ public class Brain extends IRobotCreateAdapter {
     public void loop() throws ConnectionLostException {
         readSensors(SENSORS_INFRARED_BYTE);
         readSensors(SENSORS_BUMPS_AND_WHEEL_DROPS);
-<<<<<<< HEAD
+
         dashboard.log(String.valueOf(getInfraredByte()));
         //check red Buoy
         if(getInfraredByte() == 248) {
@@ -51,10 +51,10 @@ public class Brain extends IRobotCreateAdapter {
 
 
 
-=======
+
         forward();
         dashboard.log(String.valueOf(dashboard.getAzimuth()));
->>>>>>> FETCH_HEAD
+
 
         if(isBumpRight() && isBumpLeft()) {
             reverse(200);
